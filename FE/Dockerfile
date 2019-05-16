@@ -39,7 +39,8 @@ RUN mkdir -p /home/gdc/{dp,la,dtt,dd,dm,psqlg}
 ENV TERM=xterm
 
 # Data Portal
-RUN git clone https://github.com/jmatsumura/portal-ui.git /home/gdc/dp
+RUN git clone https://github.com/jmatsumura/portal-ui.git /home/gdc/dp && \
+      sed -i "s/, 'i18n',/,/" /home/gdc/dp/gulpfile.js
 RUN cd /home/gdc/dp && ./setup.sh
 
 # Data Transfer Tool
